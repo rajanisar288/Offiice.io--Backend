@@ -1,8 +1,8 @@
-import { Jwt } from "jsonwebtoken";
+import  Jwt  from "jsonwebtoken";
 
-// Function to generate access token
+// generate access token
 const generateAccessToken = (user) => {
-  return jwt.sign({ userId: user.id }, accessTokenSecret, { expiresIn: "30m" });
+  return jwt.sign(user, process.env.AccessTokenSecretKey, { expiresIn: process.env.AccessTokenExpiryDate });
 };
 
 export default generateAccessToken;

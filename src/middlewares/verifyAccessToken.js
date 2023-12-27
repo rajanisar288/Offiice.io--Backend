@@ -1,14 +1,17 @@
-import { Jwt } from "jsonwebtoken";
+import Jwt  from "jsonwebtoken";
+import _userSchema from "./../models/user.model.js"
 
 
-// Middleware to verify access token
+// Verify request if is it authorize!!
 const authenticateToken = (req, res, next) => {
-    const token = req.header('Authorization');
-    if (!token) return res.sendStatus(401);
+    const accessToken = req.header('Authorization') || req.cookie('accessToken');
+    if (!accessToken) return res.status(401).json({status:false,message:'Unauthorized request'});
   
-    jwt.verify(token, accessTokenSecret, (err, user) => {
+    jwt.verify(accessToken, process.env.AccessTokenSecretKey, async (err, user) => {
       if (err) return res.sendStatus(403);
-      req.user = user;
+      const validUser = await _userSchema.findById(user._id)
+      if(!validUser) return res.status(401).json({status:false, message:'User is not valid'})
+      req.user = validUser;
       next();
     });
   };
