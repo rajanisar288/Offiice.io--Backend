@@ -1,8 +1,15 @@
-import  Jwt  from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
-// generate refresh token
-const generateRefreshToken = (user) => {
-  return jwt.sign(user, process.env.RefreshTokenSecretKey ,{expiresIn:process.env.RefreshTokenExpiryDate});
+const generateRefreshToken = async (user) => {
+  try {
+    const refreshToken = await jwt.sign(user, process.env.RefreshTokenSecretKey, {
+      expiresIn: process.env.RefreshTokenExpiryDate
+    });
+
+    return refreshToken;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 export default generateRefreshToken;
