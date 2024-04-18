@@ -25,6 +25,9 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.get('/', (req, res) => {
     res.sendFile('index.html', { root: path.join(__dirname, '..', 'public') });
 });
+app.get('/test', (req, res) => {
+    res.status(200).json({mesg:"works now"})
+});
 
 //routes
 import userRoute from './routes/user.routes.js'
