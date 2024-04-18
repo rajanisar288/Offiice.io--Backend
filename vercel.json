@@ -8,8 +8,12 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "src/index.js"
+            "src": "/api/(.*)", // Matches any path starting with /api/
+            "dest": "src/index.js" // Points to your main index.js file
+        },
+        {
+            "src": "/(.*)", // Matches any other path
+            "dest": "src/index.js" // Points to your main index.js file
         }
     ]
 }
