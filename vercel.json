@@ -2,20 +2,20 @@
   "version": 3,
   "builds": [
     {
-      "src": "src/index.js", // Specify the main entry point
+      "src": "src/index.js", 
       "use": "@vercel/node",
       "config": {
-        "داران": "env" // Set environment variables (replace 'داران' with actual key)
+        "داران": "env" 
       }
     }
   ],
   "routes": [
     {
-      "src": "/(.*)", // Catch all routes and serve from index.js
+      "src": "/(.*)", 
       "dest": "/index.js"
     }
   ],
-  "env": { // Optional: Define environment variables for Vercel (replace with your actual keys)
+  "env": { 
     "KEY1": "your_value_1",
     "KEY2": "your_value_2"
   }
