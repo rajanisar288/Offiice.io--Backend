@@ -25,6 +25,14 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.get('/api', (req, res) => {
     res.sendFile('index.html', { root: path.join(__dirname, '..', 'public') });
 });
+app.get('/api/getProducts' , (req,res)=>{
+    res.send({
+        name:"Apple",
+        price:444,
+        color:"black",          
+    })
+})
+app.
 app.get('/test', (req, res) => {
     res.status(200).json({mesg:"works now"})
 });
