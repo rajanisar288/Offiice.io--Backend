@@ -32,7 +32,6 @@ app.get('/api/getProducts' , (req,res)=>{
         color:"black",          
     })
 })
-app.
 app.get('/test', (req, res) => {
     res.status(200).json({mesg:"works now"})
 });
