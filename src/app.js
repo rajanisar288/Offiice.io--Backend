@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Default Server
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.sendFile('index.html', { root: path.join(__dirname, '..', 'public') });
 });
 app.get('/test', (req, res) => {
